@@ -18,6 +18,6 @@
   },
   "devDependencies": {
     "@mockoon/cli": "^9.1.0",
-    "cypress": "^13.7.3"
+    "cypress": "^15.5.0"
   }
 }
