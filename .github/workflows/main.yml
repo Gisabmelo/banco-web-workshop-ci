@@ -3,46 +3,48 @@ name: E2E tests
 # gatilhos 
 
 on: 
-  workflow_dispatch: 
+workflow_dispatch: 
 
-  jobs: 
-      tests:
+jobs: 
+tests:
 
-      #  [config do so] (windows/linux/mac, chrome/firefox/edge, ...) 
-      runs-on: ubuntu-latest
+#  [config do so] (windows/linux/mac, chrome/firefox/edge, ...) 
+runs-on: ubuntu-latest
 
 
-      #   [variaveis] (variáveis de ambiente, chaves de acesso a plataformas, etc.)
+#   [variaveis] (variáveis de ambiente, chaves de acesso a plataformas, etc.)
 
-      env:
-      API_BASE_URL: 'http://localhost:3000'
-      PORT: 4000
-      
-    #  [acoes ou passos]
-    steps: 
+env:
+API_BASE_URL: 'http://localhost:3000'
+PORT: 4000
 
-    - name: Chekout do reporsitório
-    uses: actions/checkout@v4
+#  [acoes ou passos]
+steps: 
 
-    -name: Instalando as dependencias
-    run: npm install
+# [projetos] (aplicacoes, projeto de teste, etc.)
+-name: Checkout do Repositório
+run-name: actions/checkout@v4
 
--name: Iniciando o server de mock 
+# [deps do projeto] (node/npm, java/maven,gradle, python/pip, ...)
+
+-name: Instala as dependencias
+run: npm install
+
+-name: Iniciar o servidor de mocks
 run: npm run mock-server &
 
--name: Iniciando o server de aplicacao
+-name: Iniciar o servidor de aplicacao
 run: npm run server &
 
--name: Iniciando o cypress para executar os testes
-run: npx cypresss open
+-name: Executar os testes
+run: npx cypress run
 
 
 
 
 
 
-    
 
-    
+
 
   
